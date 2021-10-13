@@ -1,0 +1,28 @@
+{
+  "name": "@eqshow/cli",
+  "version": "0.0.0",
+  "description": "eqx脚手架主程序入口",
+  "keywords": [
+    "eqx",
+    "cli"
+  ],
+  "author": "HanYagang <70358969@qq.com>",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/core/cli#readme",
+  "license": "MIT",
+  "bin": {
+    "eqx": "bin/index.js"
+  },
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanYagang/eqshow-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  }
+}
