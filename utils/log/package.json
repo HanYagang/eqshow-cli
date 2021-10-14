@@ -1,0 +1,25 @@
+{
+  "name": "@eqshow/log",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "HanYagang <70358969@qq.com>",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/utils/log#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanYagang/eqshow-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  },
+  "dependencies": {
+    "npmlog": "^5.0.1"
+  }
+}

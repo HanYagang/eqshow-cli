@@ -4,8 +4,7 @@
 
 ## Usage
 
-```
-const cli = require('@eqshow/cli');
-
-// TODO: DEMONSTRATE API
+``` sh
+npm install -g @eqshow/cli
+eqx -h
 ```

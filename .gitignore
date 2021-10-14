@@ -1,1 +1,3 @@
 node_modules
+core/**/node_modules
+utils/**/node_modules

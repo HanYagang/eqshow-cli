@@ -24,5 +24,14 @@
   },
   "bugs": {
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  },
+  "dependencies": {
+    "@eqshow/log": "file:../../utils/log",
+    "@eqshow/shared": "file:../../utils/shared",
+    "dotenv": "^10.0.0",
+    "import-local": "^3.0.3",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "user-home": "^3.0.0"
   }
 }
