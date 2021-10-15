@@ -28,8 +28,11 @@
   "dependencies": {
     "@eqshow/log": "file:../../utils/log",
     "@eqshow/shared": "file:../../utils/shared",
+    "commander": "^8.2.0",
     "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
     "import-local": "^3.0.3",
+    "leven": "^3.1.0",
     "path-exists": "^4.0.0",
     "root-check": "^1.0.0",
     "user-home": "^3.0.0"

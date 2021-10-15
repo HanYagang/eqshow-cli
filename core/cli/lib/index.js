@@ -10,6 +10,8 @@ const {
   EOL_NODE_MAJORS,
   DEFAULT_CLI_HOME
 } = require('./constants')
+// 注册主程序
+const initProgram = require('./program')
 
 // 检查脚手架版本号
 function checkPkgVersion() {
@@ -44,11 +46,13 @@ function checkUserHome() {
 function checkEnv() {
   // Dotenv可将.env文件中的变量加载到全局环境变量中
   const dotenv = require('dotenv')
+  const dotenvExpand = require('dotenv-expand')
   const dotenvPath = path.resolve(userHome, '.eqshow-cli/.env')
   if (pathExists(dotenvPath)) {
-    dotenv.config({
+    const env = dotenv.config({
       path: dotenvPath
     })
+    dotenvExpand(env)
   }
   createDefaultConfig()
 }
@@ -67,7 +71,7 @@ function createDefaultConfig() {
 
 // 检查是否开启调试模式
 function checkLogLevel() {
-  if (process.env.EQX_CLI_DEBUG) {
+  if (process.env.EQX_CLI_DEBUG === 'test') {
     log.level = 'verbose'
   }
 }
@@ -97,6 +101,9 @@ module.exports = function core() {
     // 最后重置调试权限
     checkLogLevel()
     log.verbose('脚手架主目录: ', process.env.EQX_CLI_HOME_PATH)
+    // 检查版本更新，暂时不做
+    // 注册命令
+    initProgram()
   } catch (error) {
     log.error('cli', error)
   }
