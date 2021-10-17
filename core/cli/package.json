@@ -28,6 +28,7 @@
   "dependencies": {
     "@eqshow/log": "file:../../utils/log",
     "@eqshow/shared": "file:../../utils/shared",
+    "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
     "commander": "^8.2.0",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",

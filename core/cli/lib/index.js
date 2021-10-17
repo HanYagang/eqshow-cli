@@ -3,6 +3,11 @@ const userHome = require('user-home')
 const pathExists = require('path-exists').sync
 const log = require('@eqshow/log')
 const { chalk, semver } = require('@eqshow/shared')
+const {
+  getPkgSemverVersion
+} = require(
+  '@eqshow/get-pkg-info'
+)
 // 包信息
 const pkg = require('../package.json')
 const {
@@ -76,7 +81,21 @@ function checkLogLevel() {
   }
 }
 
-module.exports = function core() {
+// 检查更新
+async function checkGlobalUpdate() {
+  // 获取当前主版本号下，最新版本
+  // const latestVersion = await getPkgSemverVersion(pkg.name, pkg.version)
+  const latestVersion = await getPkgSemverVersion('@vue/cli', '4.4.4')
+  // 提示用户更新到该版本
+  if (latestVersion) {
+    log.warn(chalk.yellow('\n' + `
+      New version available ${chalk.red(pkg.version)} → ${chalk.green(latestVersion)}
+      Run npm i -g @eqshow/cli to update!
+    `))
+  }
+}
+
+module.exports = async function core() {
   try {
     // 检查脚手架版本号
     checkPkgVersion()
@@ -101,7 +120,8 @@ module.exports = function core() {
     // 最后重置调试权限
     checkLogLevel()
     log.verbose('脚手架主目录: ', process.env.EQX_CLI_HOME_PATH)
-    // 检查版本更新，暂时不做
+    // 检查版本更新
+    await checkGlobalUpdate()
     // 注册命令
     initProgram()
   } catch (error) {
