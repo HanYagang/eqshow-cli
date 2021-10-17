@@ -84,8 +84,7 @@ function checkLogLevel() {
 // 检查更新
 async function checkGlobalUpdate() {
   // 获取当前主版本号下，最新版本
-  // const latestVersion = await getPkgSemverVersion(pkg.name, pkg.version)
-  const latestVersion = await getPkgSemverVersion('@vue/cli', '4.4.4')
+  const latestVersion = await getPkgSemverVersion(pkg.name, pkg.version)
   // 提示用户更新到该版本
   if (latestVersion) {
     log.warn(chalk.yellow('\n' + `
