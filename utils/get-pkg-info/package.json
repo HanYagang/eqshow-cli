@@ -1,0 +1,34 @@
+{
+  "name": "@eqshow/get-pkg-info",
+  "version": "0.0.0",
+  "description": "获取包相关信息",
+  "author": "HanYagang <70358969@qq.com>",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/utils/get-pkg-info#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanYagang/eqshow-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  },
+  "dependencies": {
+    "@eqshow/shared": "file:../shared",
+    "axios": "^0.23.0",
+    "url-join": "^4.0.1"
+  }
+}
