@@ -3,6 +3,7 @@
 const commander = require('commander')
 const leven = require('leven')
 const { chalk } = require('@eqshow/shared')
+const createAction = require('@eqshow/create')
 const pkg = require('../package.json')
 
 module.exports = function initProgram() {
@@ -36,6 +37,22 @@ module.exports = function initProgram() {
     .description('测试用的命令')
     .action(() => {
       console.log('测试用的命令')
+    })
+
+  // create
+  program
+    .command('create <app-name>')
+    .description('创建一个新项目')
+    .option('-f, --force', '覆盖目标目录（如果它存在）')
+    .action(createAction)
+
+  // add
+  program
+    .command('add <plugin-name>')
+    .description('添加插件')
+    .option('-f, --force', '是否强制添加插件')
+    .action((...args) => {
+      console.log('add: ', args)
     })
   
   // 处理未知命令并匹配建议

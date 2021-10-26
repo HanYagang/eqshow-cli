@@ -1,0 +1,29 @@
+{
+  "name": "@eqshow/add",
+  "version": "0.0.0",
+  "description": "添加插件命令",
+  "author": "HanYagang <70358969@qq.com>",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/commands/add#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanYagang/eqshow-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  }
+}
