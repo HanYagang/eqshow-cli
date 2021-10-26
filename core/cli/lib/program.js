@@ -4,24 +4,25 @@ const commander = require('commander')
 const leven = require('leven')
 const { chalk } = require('@eqshow/shared')
 const pkg = require('../package.json')
-// 建议命令
-function suggestCommands(unknownCommand) {
-  const availableCommands = commander.map(cmd => cmd._name)
-  let suggestion
-  availableCommands.forEach(cmd => {
-    const isBestMatch = leven(cmd, unknownCommand) < leven(suggestion || '', unknownCommand)
-    if (leven(cmd, unknownCommand) < 3 && isBestMatch) {
-      suggestion = cmd
-    }
-  })
-  if (suggestion) {
-    console.log(`  ` + chalk.red(`你的意思是 ${chalk.yellow(suggestion)} 吗?`))
-    console.log()
-  }
-}
 
 module.exports = function initProgram() {
   const program = new commander.Command(pkg.version)
+
+  // 建议命令
+  function suggestCommands(unknownCommand) {
+    const availableCommands = program.commands.map(cmd => cmd._name)
+    let suggestion
+    availableCommands.forEach(cmd => {
+      const isBestMatch = leven(cmd, unknownCommand) < leven(suggestion || '', unknownCommand)
+      if (leven(cmd, unknownCommand) < 3 && isBestMatch) {
+        suggestion = cmd
+      }
+    })
+    if (suggestion) {
+      console.log(`  ` + chalk.red(`你的意思是 ${chalk.yellow(suggestion)} 吗?`))
+      console.log()
+    }
+  }
 
   program
     .name(Object.keys(pkg.bin)[0])
