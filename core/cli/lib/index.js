@@ -124,6 +124,6 @@ module.exports = async function core() {
     // 注册命令
     initProgram()
   } catch (error) {
-    log.error('cli', error)
+    log.error('cli', error.message)
   }
 }

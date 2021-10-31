@@ -3,7 +3,7 @@
 const commander = require('commander')
 const leven = require('leven')
 const { chalk } = require('@eqshow/shared')
-const createAction = require('@eqshow/create')
+const exec = require('@eqshow/exec')
 const pkg = require('../package.json')
 
 module.exports = function initProgram() {
@@ -44,7 +44,12 @@ module.exports = function initProgram() {
     .command('create <app-name>')
     .description('创建一个新项目')
     .option('-f, --force', '覆盖目标目录（如果它存在）')
-    .action(createAction)
+    .option('-tp, --targetPath <target-path>', '指定动态加载文件的路径', '')
+    .action(exec)
+    .on('option:targetPath', function() {
+      const { targetPath } =this.opts()
+      process.env.EQX_CLI_TARGET_PATH = targetPath
+    })
 
   // add
   program
@@ -54,7 +59,7 @@ module.exports = function initProgram() {
     .action((...args) => {
       console.log('add: ', args)
     })
-  
+
   // 处理未知命令并匹配建议
   program
     .on('command:*', operands => {
