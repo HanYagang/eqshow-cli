@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "@eqshow/shared": "file:../../utils/shared",
+    "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
+    "npminstall": "^5.2.2",
     "pkg-dir": "^5.0.0"
   }
 }

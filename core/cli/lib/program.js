@@ -32,13 +32,6 @@ module.exports = function initProgram() {
     .helpOption('-h, --help', '显示当前命令的使用文档')
     .addHelpText('after', '\n  运行 '+ chalk.cyan('eqx <command> --help') + ' 来展示当前命令的详细使用文档\n')
 
-  program
-    .command('test')
-    .description('测试用的命令')
-    .action(() => {
-      console.log('测试用的命令')
-    })
-
   // create
   program
     .command('create <app-name>')
