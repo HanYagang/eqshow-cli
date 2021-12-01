@@ -28,7 +28,8 @@ async function exec(...args) {
 
   if (cache) { // 缓存模式
     if (await pkg.exists()) {
-      console.log('pkg存在', pkg.storagePath)
+      // 检查更新
+      await pkg.update()
     } else {
       await pkg.install()
     }

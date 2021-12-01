@@ -8,7 +8,8 @@ const fse = require('fs-extra')
 const { getDefaultRegistry, getPkgLatestVersion } = require('@eqshow/get-pkg-info')
 const {
   isObject,
-  normalizeFilePath
+  normalizeFilePath,
+  semver
 } = require('@eqshow/shared')
 const log = require('@eqshow/log')
 
@@ -30,58 +31,61 @@ class Package {
     this.cache = options.cache
   }
 
-  // 获取缓存文件名称前缀
-  get cacheFilePrefix() {
-    return this.name.replace(/\//, '_')
-  }
-
-  // 获取缓存地址 
-  get storagePath() {
-    if (this.cache) {
-      return path.resolve(this.targetPath, `node_modules/_${'@vue_cli'}@${this.version}@${'@vue/cli'}`)
-    }
-    return null
-  }
-
-  async prepare() {
-    // 缓存目录不存在则创建目录
-    if (this.cache && !pathExists(this.targetPath)) {
-      fse.mkdirpSync(this.targetPath)
-    }
-    // 获取版本号
-    if (this.version === 'latest') {
-      try {
-        this.version = await getPkgLatestVersion('@vue/cli')
-      } catch (error) {
-        log.error(error.message)
-      }
-    }
-  }
-
   // 判断缓存的pkg是否存在
   async exists() {
     if (this.cache) {
-      await this.prepare()
-      return pathExists(this.storagePath)
+      // 缓存目录不存在则创建目录
+      if (this.cache && !pathExists(this.targetPath)) {
+        fse.mkdirpSync(path.resolve(this.targetPath, 'node_modules'))
+      }
+      // 包是否存在
+      let pkgPath = path.resolve(this.targetPath, `node_modules/${'@vue/cli'}/package.json`)
+      if (pathExists(pkgPath)) {
+        const pkg = require(pkgPath)
+        const { version } = pkg
+        if (version) {
+          this.version = version
+          return true
+        }
+      }
+      // 包不存在，则获取最新版本号
+      if (this.version === 'latest') {
+        this.version = await getPkgLatestVersion('@vue/cli')
+        return false
+      }
     }
-    return false
+    return pathExists(this.targetPath)
   }
 
   // 安装pkg
   install() {
     return npminstall({
       registry: getDefaultRegistry(),
-      root: this.targetPath,
       storeDir: path.resolve(this.targetPath, 'node_modules'),
       pkgs: [{
         name: '@vue/cli',
         version: this.version
       }],
+      root: this.targetPath,
     })
   }
 
-  // 更新pkg
-  update() {}
+  // 检查更新pkg
+  async update() {
+    const latestVersion = await getPkgLatestVersion('@vue/cli')
+    if (semver.gt(latestVersion, this.version)) {
+      await npminstall({
+        root: this.targetPath,
+        storeDir: path.resolve(this.targetPath, 'node_modules'),
+        registry: getDefaultRegistry(),
+        pkgs: [{
+          name: '@vue/cli',
+          version: latestVersion
+        }],
+      })
+      this.version = latestVersion
+    }
+  }
 
   // 获取入口文件路径
   getRootFilePath() {
