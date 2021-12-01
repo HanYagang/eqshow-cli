@@ -11,33 +11,31 @@ async function exec(...args) {
   const cmdName = cmd.name()
   const pkgName = `@eqshow/${cmdName}`
   const pkgVersion = 'latest'
-  let pkg
-  // /c/Users/韩/Desktop/eqshow-cli/commands/create/lib
+  // 是否为缓存模式，对应的为指定模式
+  const cache = !targetPath
+  const CACHE_DIR = 'dependencies'
 
-  // 未指定包的路径，那么会去缓存路径中查找
-  if (!targetPath) {
-    targetPath = path.resolve(homePath, 'dependencies')
-    pkg = new Package({
-      name: pkgName,
-      version: pkgVersion,
-      targetPath,
-    })
+  if (cache) {
+    targetPath = path.resolve(homePath, CACHE_DIR)
+  }
+  // 创建pacakge信息
+  const pkg = new Package({
+    name: pkgName,
+    version: pkgVersion,
+    targetPath,
+    cache
+  })
 
-    if (pkg.exists()) {
-      console.log('pkg存在')
+  if (cache) { // 缓存模式
+    if (await pkg.exists()) {
+      console.log('pkg存在', pkg.storagePath)
     } else {
       await pkg.install()
     }
-  } else {
-    pkg = new Package({
-      name: pkgName,
-      version: pkgVersion,
-      targetPath,
-    })
+  } else { // 指定模式
+    const rootFilePath = pkg.getRootFilePath()
+    console.log('root file path: ', rootFilePath)
   }
-
-  const rootFilePath = pkg.getRootFilePath()
-  console.log('root file path: ', rootFilePath)
 }
 
 module.exports = exec

@@ -44,10 +44,19 @@ async function getPkgSemverVersion(pkgName, pkgVersion, registry) {
   return semverVersions[0]
 }
 
+// 获取最新稳定版本
+async function getPkgLatestVersion(pkgName, registry) {
+  let versions = await getPkgVersions(pkgName
+    , registry)
+  versions = versions.filter(v => !semver.prerelease(v)) // 过滤稳定版本
+  return versions[0]
+}
+
 module.exports = {
   getDefaultRegistry,
   getPkgInfo,
   getPkgVersions,
   getPkgSemverVersions,
-  getPkgSemverVersion
+  getPkgSemverVersion,
+  getPkgLatestVersion
 }
