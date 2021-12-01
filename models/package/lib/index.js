@@ -11,7 +11,6 @@ const {
   normalizeFilePath,
   semver
 } = require('@eqshow/shared')
-const log = require('@eqshow/log')
 
 class Package {
   constructor(options) {
@@ -61,12 +60,12 @@ class Package {
   install() {
     return npminstall({
       registry: getDefaultRegistry(),
-      storeDir: path.resolve(this.targetPath, 'node_modules'),
       pkgs: [{
         name: '@vue/cli',
         version: this.version
       }],
       root: this.targetPath,
+      storeDir: path.resolve(this.targetPath, 'node_modules'),
     })
   }
 
