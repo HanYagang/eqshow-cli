@@ -27,9 +27,12 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/shared": "file:../../utils/shared",
     "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
+    "@eqshow/shared": "file:../../utils/shared",
+    "@eqshow/log": "file:../../utils/log",
+    "fs-extra": "^10.0.0",
     "npminstall": "^5.2.2",
+    "path-exists": "^4.0.0",
     "pkg-dir": "^5.0.0"
   }
 }
