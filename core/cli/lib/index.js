@@ -86,7 +86,7 @@ async function checkGlobalUpdate() {
   // 获取当前主版本号下，最新版本
   const latestVersion = await getPkgSemverVersion(pkg.name, pkg.version)
   // 提示用户更新到该版本
-  if (latestVersion) {
+  if (semver.gt(latestVersion, pkg.version)) {
     log.warn(chalk.yellow('\n' + `
       New version available ${chalk.red(pkg.version)} → ${chalk.green(latestVersion)}
       Run npm i -g @eqshow/cli to update!
