@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/package",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "package模型",
   "author": "HanYagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/models/package#readme",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
-    "@eqshow/shared": "file:../../utils/shared",
     "@eqshow/log": "file:../../utils/log",
+    "@eqshow/shared": "file:../../utils/shared",
     "fs-extra": "^10.0.0",
     "npminstall": "^5.2.2",
     "path-exists": "^4.0.0",

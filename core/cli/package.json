@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "eqx脚手架主程序入口",
   "keywords": [
     "eqx",
@@ -27,10 +27,10 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
+    "@eqshow/exec": "file:../exec",
+    "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
     "@eqshow/log": "file:../../utils/log",
     "@eqshow/shared": "file:../../utils/shared",
-    "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
-    "@eqshow/exec": "file:../exec",
     "commander": "^8.2.0",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",

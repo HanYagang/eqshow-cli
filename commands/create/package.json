@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/create",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "创建项目命令",
   "author": "HanYagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/commands/create#readme",
