@@ -28,8 +28,9 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/shared": "file:../shared",
+    "@eqshow/shared": "^1.0.0",
     "axios": "^0.23.0",
     "url-join": "^4.0.1"
-  }
+  },
+  "gitHead": "8a16492a27864e3c95abb05cfa8afd3a2f0ad464"
 }

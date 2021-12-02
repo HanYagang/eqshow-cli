@@ -27,10 +27,10 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/exec": "file:../exec",
-    "@eqshow/get-pkg-info": "file:../../utils/get-pkg-info",
-    "@eqshow/log": "file:../../utils/log",
-    "@eqshow/shared": "file:../../utils/shared",
+    "@eqshow/exec": "^1.0.0",
+    "@eqshow/get-pkg-info": "^1.0.0",
+    "@eqshow/log": "^1.0.0",
+    "@eqshow/shared": "^1.0.0",
     "commander": "^8.2.0",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
@@ -39,5 +39,6 @@
     "path-exists": "^4.0.0",
     "root-check": "^1.0.0",
     "user-home": "^3.0.0"
-  }
+  },
+  "gitHead": "8a16492a27864e3c95abb05cfa8afd3a2f0ad464"
 }
