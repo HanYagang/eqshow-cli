@@ -36,8 +36,7 @@ async function exec(...args) {
   }
   // 获取文件路径
   const rootFilePath = pkg.getRootFilePath()
-  console.log(rootFilePath)
-  (require(rootFilePath))()
+  (require(rootFilePath))(...args)
 }
 
 module.exports = exec
