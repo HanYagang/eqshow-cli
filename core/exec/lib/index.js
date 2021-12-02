@@ -25,18 +25,18 @@ async function exec(...args) {
     targetPath,
     cache
   })
-
-  if (cache) { // 缓存模式
+  // 缓存模式-判定包是否存在，不存在则安装，存在则检查更新
+  if (cache) {
     if (await pkg.exists()) {
       // 检查更新
       await pkg.update()
     } else {
       await pkg.install()
     }
-  } else { // 指定模式
-    const rootFilePath = pkg.getRootFilePath()
-    console.log('root file path: ', rootFilePath)
   }
+  // 获取文件路径
+  const rootFilePath = pkg.getRootFilePath()
+  require(rootFilePath)()
 }
 
 module.exports = exec

@@ -30,6 +30,14 @@ class Package {
     this.cache = options.cache
   }
 
+  // 缓存路径(仅缓存模式可使用)
+  get storagePath() {
+    if (this.cache) {
+      return path.resolve(this.targetPath, 'node_modules', this.name)
+    }
+    return null
+  }
+
   // 判断缓存的pkg是否存在
   async exists() {
     if (this.cache) {
@@ -38,7 +46,7 @@ class Package {
         fse.mkdirpSync(path.resolve(this.targetPath, 'node_modules'))
       }
       // 包是否存在
-      let pkgPath = path.resolve(this.targetPath, `node_modules/${'@vue/cli'}/package.json`)
+      let pkgPath = path.resolve(this.storagePath, 'package.json')
       if (pathExists(pkgPath)) {
         const pkg = require(pkgPath)
         const { version } = pkg
@@ -49,7 +57,7 @@ class Package {
       }
       // 包不存在，则获取最新版本号
       if (this.version === 'latest') {
-        this.version = await getPkgLatestVersion('@vue/cli')
+        this.version = await getPkgLatestVersion(this.name)
         return false
       }
     }
@@ -61,7 +69,7 @@ class Package {
     return npminstall({
       registry: getDefaultRegistry(),
       pkgs: [{
-        name: '@vue/cli',
+        name: this.name,
         version: this.version
       }],
       root: this.targetPath,
@@ -71,14 +79,14 @@ class Package {
 
   // 检查更新pkg
   async update() {
-    const latestVersion = await getPkgLatestVersion('@vue/cli')
+    const latestVersion = await getPkgLatestVersion(this.name)
     if (semver.gt(latestVersion, this.version)) {
       await npminstall({
         root: this.targetPath,
         storeDir: path.resolve(this.targetPath, 'node_modules'),
         registry: getDefaultRegistry(),
         pkgs: [{
-          name: '@vue/cli',
+          name: this.name,
           version: latestVersion
         }],
       })
@@ -89,7 +97,7 @@ class Package {
   // 获取入口文件路径
   getRootFilePath() {
     // 1、获取package.json所在目录
-    const dir = pkgDir(this.targetPath)
+    const dir = pkgDir(this.cache ? this.storagePath : this.targetPath)
     if (dir) {
       // 2、读取package.json
       const pkg = require(path.resolve(dir, 'package.json'))
