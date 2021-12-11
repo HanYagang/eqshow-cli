@@ -5,8 +5,7 @@ class CreateCommand extends Command {
 }
 
 function create(...args) {
-  console.log('create: ',args.slice(0, args.length - 1))
-  return new CreateCommand()
+  return new CreateCommand(args)
 }
 
 module.exports.CreateCommand = CreateCommand
