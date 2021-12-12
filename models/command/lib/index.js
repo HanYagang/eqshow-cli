@@ -8,7 +8,12 @@ class Command {
     this._argv = argv
     // 命令本身
     this._cmd = cmd
-    console.log('command', this._argv)
+    // 初始化执行command
+    this.init()
+  }
+
+  init() {
+    throw Error('必须重写init函数')
   }
 }
 

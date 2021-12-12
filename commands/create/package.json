@@ -22,7 +22,9 @@
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
   },
   "dependencies": {
-    "@eqshow/command": "file:../../models/command"
+    "@eqshow/command": "file:../../models/command",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0"
   },
   "gitHead": "8a16492a27864e3c95abb05cfa8afd3a2f0ad464"
 }
