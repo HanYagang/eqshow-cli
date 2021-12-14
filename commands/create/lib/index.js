@@ -1,7 +1,9 @@
 const fs = require('fs')
+const path = require('path')
 const inquirer = require('inquirer')
 const fse = require('fs-extra')
 const Command = require('@eqshow/command')
+const Package = require('@eqshow/package')
 
 class CreateCommand extends Command {
   async init() {
@@ -50,12 +52,15 @@ class CreateCommand extends Command {
       }
     }
     // 获取项目基本信息
-    await this.getProjectInfo()
+    const projectInfo = await this.getProjectInfo()
+    // 获取模板信息
+    await this.getTemplate(projectInfo)
   }
 
   // 获取项目基本信息
-  getProjectInfo() {
-    inquirer.prompt({
+  async getProjectInfo() {
+    const result = Object.create(null)
+    const { type } = await inquirer.prompt({
       type: 'list',
       name: 'type',
       message: '请选择创建项目的类型',
@@ -70,9 +75,36 @@ class CreateCommand extends Command {
           name: '组件库'
         }
       ]
-    }).then(answer => {
-      console.log('answer: ', answer)
     })
+    result.type = type
+    // 设置包名和版本
+    if (result.type === 'project') {
+      result.name = '@eqshow/template-project'
+    } else if (type === 'component') {
+      result.name = '@eqshow/template-component'
+    }
+    // 设置默认版本
+    result.version = 'latest'
+    return result
+  }
+
+  // 获取模板
+  async getTemplate({ name, version }) {
+    const pkg = new Package({
+      name,
+      version,
+      targetPath: path.resolve(process.env.EQX_CLI_HOME_PATH, 'template'),
+      cache: true
+    })
+
+    if (await pkg.exists()) {
+      // 检查更新
+      await pkg.update()
+    } else {
+      await pkg.install()
+    }
+
+    console.log('pkg: ', pkg.storagePath)
   }
 }
 

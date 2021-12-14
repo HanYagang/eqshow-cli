@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@eqshow/command": "file:../../models/command",
+    "@eqshow/package": "file:../../models/package",
     "fs-extra": "^10.0.0",
     "inquirer": "^8.2.0"
   },
