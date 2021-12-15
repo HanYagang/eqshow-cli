@@ -107,7 +107,12 @@ class CreateCommand extends Command {
       await pkg.install()
     }
 
-    console.log('pkg: ', pkg.storagePath)
+    console.log('开始生成模板……')
+    fse.copySync(
+      path.resolve(pkg.storagePath, 'template'),
+      this.projectName
+    )
+    console.log('模板生成成功！！！')
   }
 }
 
