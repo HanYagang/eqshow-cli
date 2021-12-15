@@ -2,14 +2,13 @@ const fs = require('fs')
 const path = require('path')
 const inquirer = require('inquirer')
 const fse = require('fs-extra')
+const pathExists = require('path-exists').sync
 const Command = require('@eqshow/command')
 const Package = require('@eqshow/package')
 
 class CreateCommand extends Command {
   async init() {
     this.projectName = this._argv[0] || ''
-    const opts = this._cmd.opts()
-    const { force } = opts
     try {
       await this.prepare()
     } catch (error) {
@@ -19,7 +18,11 @@ class CreateCommand extends Command {
   // 准备工作
   async prepare() {
     // 判断当前目录是否为空
-    const fileList = fs.readdirSync(process.cwd())
+    const projectDir = path.resolve(process.cwd(), this.projectName)
+    if (!pathExists(projectDir)) {
+      fse.mkdirSync(this.projectName)
+    }
+    const fileList = fs.readdirSync(projectDir)
     const opts = this._cmd.opts()
     let { force } = opts
     if (fileList.length) {
