@@ -6,6 +6,8 @@ exports.chalk = require('chalk')
 exports.semver = require('semver')
 // 处理路径
 exports.slash = require('slash')
+// 获取环境信息
+Object.assign(exports, require('./lib/env.js'))
 
 // 判断是否为对象类型
 exports.isObject = function(val) {

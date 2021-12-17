@@ -5,10 +5,12 @@ const fse = require('fs-extra')
 const pathExists = require('path-exists').sync
 const Command = require('@eqshow/command')
 const Package = require('@eqshow/package')
+const { hasYarn } = require('@eqshow/shared')
 
 class CreateCommand extends Command {
   async init() {
     this.projectName = this._argv[0] || ''
+    this.cliOptions = this._argv[1] || {}
     try {
       await this.prepare()
     } catch (error) {
@@ -113,6 +115,14 @@ class CreateCommand extends Command {
       this.projectName
     )
     console.log('模板生成成功！！！')
+
+    const packageManager = (
+      this.cliOptions.packageManager ||
+      (hasYarn() ? 'yarn' : null) ||
+      'npm'
+    )
+
+    console.log('package manager: ', packageManager)
   }
 }
 
