@@ -6,13 +6,6 @@
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/commands/create#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com/",
     "access": "public"
@@ -25,7 +18,9 @@
     "@eqshow/command": "file:../../models/command",
     "@eqshow/package": "file:../../models/package",
     "@eqshow/shared": "file:../../utils/shared",
+    "ejs": "^3.1.6",
     "fs-extra": "^10.0.0",
+    "glob": "^7.2.0",
     "inquirer": "^8.2.0",
     "path-exists": "4.0.0"
   },

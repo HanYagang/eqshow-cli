@@ -3,6 +3,8 @@ const path = require('path')
 const inquirer = require('inquirer')
 const fse = require('fs-extra')
 const pathExists = require('path-exists').sync
+const glob = require('glob')
+const ejs = require('ejs')
 const Command = require('@eqshow/command')
 const Package = require('@eqshow/package')
 const { hasYarn } = require('@eqshow/shared')
@@ -94,7 +96,8 @@ class CreateCommand extends Command {
   }
 
   // 获取模板
-  async getTemplate({ name, version }) {
+  async getTemplate(projectInfo) {
+    const { name, version } = projectInfo
     const pkg = new Package({
       name,
       version,
@@ -114,7 +117,10 @@ class CreateCommand extends Command {
       path.resolve(pkg.storagePath, 'template'),
       this.projectName
     )
-    console.log('模板生成成功！！！')
+    console.log('模板生成成功，开始ejs渲染模板')
+    // 拷贝完成之后，ejs渲染一遍
+    await this.templateRender()
+    console.log('模板渲染成功！！！')
 
     const packageManager = (
       this.cliOptions.packageManager ||
@@ -123,6 +129,40 @@ class CreateCommand extends Command {
     )
 
     console.log('package manager: ', packageManager)
+  }
+
+  // ejs渲染模板
+  templateRender() {
+    return new Promise((resolve, reject) => {
+      const cwd = path.resolve(process.cwd(), this.projectName)
+      glob('**', {
+        cwd,
+        ignore: ['node_modules/**', 'public/**', 'yarn.lock'],
+        nodir: true,
+      }, (err, files) => {
+        if (err) reject(err)
+        Promise.all(files.map(file => {
+          // 完整路径
+          const absolutePath = path.resolve(cwd, file)
+          return new Promise((_resolve, _reject) => {
+            ejs.renderFile(absolutePath, {
+              name: this.projectName
+            }, {}, (err, result) => {
+              if (err) {
+                _reject(err)
+              } else {
+                fse.writeFileSync(absolutePath, result)
+                _resolve(result)
+              }
+            })
+          })
+        })).then(() => {
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    })
   }
 }
 
