@@ -53,7 +53,9 @@ class CreateCommand extends Command {
         force = isClean
       }
       if (force) {
+        console.log('开始清空目录……')
         fse.emptyDirSync(process.cwd())
+        console.log('目录清空完成！！！')
       } else {
         throw Error('当前目录不为空，请清空后或者选择新的目录进行创建')
       }
@@ -104,14 +106,13 @@ class CreateCommand extends Command {
       targetPath: path.resolve(process.env.EQX_CLI_HOME_PATH, 'template'),
       cache: true
     })
-
+    // 检查包是否存在，存在则检查更新，不存在则进行安装
     if (await pkg.exists()) {
       // 检查更新
       await pkg.update()
     } else {
       await pkg.install()
     }
-
     console.log('开始生成模板……')
     fse.copySync(
       path.resolve(pkg.storagePath, 'template'),
@@ -121,14 +122,20 @@ class CreateCommand extends Command {
     // 拷贝完成之后，ejs渲染一遍
     await this.templateRender()
     console.log('模板渲染成功！！！')
-
     const packageManager = (
       this.cliOptions.packageManager ||
       (hasYarn() ? 'yarn' : null) ||
       'npm'
     )
-
-    console.log('package manager: ', packageManager)
+    console.log('安装 node_modules ……')
+    const args = packageManager === 'yarn' ? [] : ['install']
+    const result = await this.exec(packageManager, args, {
+      cwd: path.resolve(process.cwd(), 'hello-world'),
+      stdio: 'inherit'
+    })
+    if (result && result.status === 0) {
+      console.log('node_modules安装完成！')
+    }
   }
 
   // ejs渲染模板
@@ -163,6 +170,15 @@ class CreateCommand extends Command {
         })
       })
     })
+  }
+
+  // 动态执行命令
+  exec(command, args, options) {
+    const win32 = process.platform === 'win32'
+    const cmd = win32 ? 'cmd' : command
+    const cmdArgs = win32 ? ['/c'].concat(command, args) : args
+  
+    return require('child_process').spawnSync(cmd, cmdArgs, options || {})
   }
 }
 
