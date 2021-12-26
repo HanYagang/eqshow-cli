@@ -58,14 +58,15 @@ class Package {
       // 包不存在，则获取最新版本号
       if (this.version === 'latest') {
         this.version = await getPkgLatestVersion(this.name)
-        return false
       }
+      return false
     }
     return pathExists(this.targetPath)
   }
 
   // 安装pkg
   install() {
+    console.log('install', this.version)
     return npminstall({
       registry: getDefaultRegistry(),
       pkgs: [{
@@ -81,6 +82,7 @@ class Package {
   async update() {
     const latestVersion = await getPkgLatestVersion(this.name)
     if (semver.gt(latestVersion, this.version)) {
+      console.log('更新安装包……')
       await npminstall({
         root: this.targetPath,
         storeDir: path.resolve(this.targetPath, 'node_modules'),
@@ -90,6 +92,7 @@ class Package {
           version: latestVersion
         }],
       })
+      console.log('安装包更新完成！！！')
       this.version = latestVersion
     }
   }
@@ -97,7 +100,21 @@ class Package {
   // 获取入口文件路径
   getRootFilePath() {
     // 1、获取package.json所在目录
-    const dir = pkgDir(this.cache ? this.storagePath : this.targetPath)
+    let dir = null
+    if (this.cache) {
+      /**
+       * 用this.storagePath获取的是包的软链接地址，当包存在更新，
+       * 更新之后执行包里内容还是之前的内容，为了解决这个问题，
+       * 我们获取更新之后包的实际地址，那样就解决这个问题了
+       */
+      dir = pkgDir(path.resolve(
+        this.targetPath,
+        'node_modules',
+        `_${this.name.replace(/\//, '_')}@${this.version}@${this.name}`
+      ))
+    } else {
+      dir = pkgDir(this.targetPath)
+    }
     if (dir) {
       // 2、读取package.json
       const pkg = require(path.resolve(dir, 'package.json'))
