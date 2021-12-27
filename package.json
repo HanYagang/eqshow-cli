@@ -15,6 +15,11 @@
   },
   "homepage": "https://github.com/HanYagang/eqshow-cli#readme",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.5.1"
   }
 }

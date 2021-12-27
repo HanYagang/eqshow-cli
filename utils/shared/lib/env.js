@@ -1,4 +1,4 @@
-const { execSync } = require('child_process')
+const { execSync } = require("child_process")
 
 // env detection
 let _hasYarn
@@ -7,7 +7,7 @@ exports.hasYarn = () => {
     return _hasYarn
   }
   try {
-    execSync('yarn --version', { stdio: 'ignore' })
+    execSync("yarn --version", { stdio: "ignore" })
     return (_hasYarn = true)
   } catch (e) {
     return (_hasYarn = false)

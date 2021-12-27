@@ -1,7 +1,5 @@
-'use strict';
-
-const path = require('path')
-const Package = require('@eqshow/package')
+const path = require("path")
+const Package = require("@eqshow/package")
 
 async function exec(...args) {
   let targetPath = process.env.EQX_CLI_TARGET_PATH
@@ -10,10 +8,10 @@ async function exec(...args) {
   const cmd = args[args.length - 1]
   const cmdName = cmd.name()
   const pkgName = `@eqshow/${cmdName}`
-  const pkgVersion = 'latest'
+  const pkgVersion = "latest"
   // 是否为缓存模式，对应的为指定模式
   const cache = !targetPath
-  const CACHE_DIR = 'dependencies'
+  const CACHE_DIR = "dependencies"
 
   if (cache) {
     targetPath = path.resolve(homePath, CACHE_DIR)

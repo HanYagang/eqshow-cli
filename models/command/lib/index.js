@@ -1,5 +1,3 @@
-'use strict';
-
 class Command {
   constructor(args) {
     const cmd = args[args.length - 1]
@@ -13,7 +11,7 @@ class Command {
   }
 
   init() {
-    throw Error('必须重写init函数')
+    throw Error("必须重写init函数")
   }
 }
 

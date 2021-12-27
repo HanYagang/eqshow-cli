@@ -1,7 +1,6 @@
-'use strict';
-
-module.exports = add;
-
 function add() {
-    // TODO
+  // TODO
+  console.log("this is add command")
 }
+
+module.exports = add
