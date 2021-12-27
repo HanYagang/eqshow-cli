@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/exec",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "动态加载应用程序",
   "author": "HanYagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/core/exec#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/package": "^1.0.1"
+    "@eqshow/package": "^1.0.3"
   },
   "gitHead": "8a16492a27864e3c95abb05cfa8afd3a2f0ad464"
 }
