@@ -13,6 +13,8 @@ module.exports = {
     "prettier/prettier": [
       2,
       {
+        // 解决win系统换行符报错问题
+        endOfLine: "auto",
         semi: false,
         // 禁止末尾逗号
         trailingComma: "none"
