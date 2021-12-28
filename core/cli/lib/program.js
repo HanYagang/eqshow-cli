@@ -58,7 +58,7 @@ module.exports = function initProgram() {
     .description("添加插件")
     .option("-f, --force", "是否强制添加插件")
     .action((...args) => {
-      console.log("add: ", args)
+      require("@eqshow/add")(...args)
     })
 
   // 处理未知命令并匹配建议

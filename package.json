@@ -1,4 +1,11 @@
 {
+  "private": true,
+  "workspaces": [
+    "commands/*",
+    "core/*",
+    "models/*",
+    "utils/*"
+  ],
   "name": "eqshow-cli",
   "description": "eqx脚手架",
   "scripts": {

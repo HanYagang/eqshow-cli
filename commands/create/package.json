@@ -15,9 +15,9 @@
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
   },
   "dependencies": {
-    "@eqshow/command": "file:../../models/command",
-    "@eqshow/package": "file:../../models/package",
-    "@eqshow/shared": "file:../../utils/shared",
+    "@eqshow/command": "^1.0.2",
+    "@eqshow/package": "^1.0.3",
+    "@eqshow/shared": "^1.0.2",
     "ejs": "^3.1.6",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
