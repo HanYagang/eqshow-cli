@@ -15,7 +15,10 @@
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
   },
   "dependencies": {
-    "@eqshow/command": "^1.0.2"
+    "@eqshow/command": "^1.0.2",
+    "@eqshow/get-pkg-info": "^1.0.2",
+    "@eqshow/package-manager": "^1.0.3",
+    "@eqshow/shared": "^1.0.2"
   },
   "gitHead": "8a16492a27864e3c95abb05cfa8afd3a2f0ad464"
 }

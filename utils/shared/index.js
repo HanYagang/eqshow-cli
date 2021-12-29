@@ -7,6 +7,8 @@ exports.semver = require("semver")
 exports.slash = require("slash")
 // 获取环境信息
 Object.assign(exports, require("./lib/env.js"))
+// 动态执行命令
+Object.assign(exports, require("./lib/execute-command"))
 
 // 判断是否为对象类型
 exports.isObject = function (val) {
