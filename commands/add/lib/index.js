@@ -1,5 +1,5 @@
 const Command = require("@eqshow/command")
-const { chalk } = require("@eqshow/shared")
+const { chalk, resolveModule } = require("@eqshow/shared")
 const PackageManager = require("@eqshow/package-manager")
 const { getPkgLatestVersion } = require("@eqshow/get-pkg-info")
 
@@ -28,6 +28,12 @@ class AddCommand extends Command {
       )}`
     )
     console.log()
+
+    const generatorPath = resolveModule(
+      `${this.pluginName}/generator`,
+      process.cwd()
+    )
+    console.log("xxxx", generatorPath)
   }
 
   // 解析插件名称和版本号

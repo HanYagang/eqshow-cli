@@ -9,6 +9,8 @@ exports.slash = require("slash")
 Object.assign(exports, require("./lib/env.js"))
 // 动态执行命令
 Object.assign(exports, require("./lib/execute-command"))
+// module相关
+Object.assign(exports, require("./lib/module"))
 
 // 判断是否为对象类型
 exports.isObject = function (val) {
