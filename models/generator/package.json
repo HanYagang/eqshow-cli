@@ -1,0 +1,20 @@
+{
+  "name": "@eqshow/generator",
+  "version": "1.0.3",
+  "description": "generator工具类",
+  "author": "hanyagang <70358969@qq.com>",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/models/generator#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanYagang/eqshow-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  }
+}

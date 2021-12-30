@@ -17,6 +17,7 @@
   "dependencies": {
     "@eqshow/command": "^1.0.2",
     "@eqshow/get-pkg-info": "^1.0.2",
+    "@eqshow/invoke": "1.0.3",
     "@eqshow/package-manager": "^1.0.3",
     "@eqshow/shared": "^1.0.2"
   },
