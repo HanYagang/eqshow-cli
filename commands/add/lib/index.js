@@ -2,6 +2,7 @@ const Command = require("@eqshow/command")
 const { chalk, resolveModule } = require("@eqshow/shared")
 const PackageManager = require("@eqshow/package-manager")
 const { getPkgLatestVersion } = require("@eqshow/get-pkg-info")
+const invoke = require("@eqshow/invoke")
 
 class AddCommand extends Command {
   async init() {
@@ -10,7 +11,7 @@ class AddCommand extends Command {
     this.parsingPlugin()
 
     console.log()
-    console.log(`📦  Installing ${chalk.cyan(this.pluginName)}...`)
+    console.log(`📦  安装中 ${chalk.cyan(this.pluginName)}...`)
     console.log()
 
     const pm = new PackageManager({ context: process.cwd() })
@@ -22,18 +23,22 @@ class AddCommand extends Command {
     // 安装插件
     await pm.add(`${this.pluginName}@${this.pluginVersion}`)
 
+    console.log()
     console.log(
-      `${chalk.green("✔")}  Successfully installed plugin: ${chalk.cyan(
-        this.pluginName
-      )}`
+      `${chalk.green("✔")}  成功安装插件: ${chalk.cyan(this.pluginName)}`
     )
     console.log()
 
+    // 判定安装的包是否存在generator文件
     const generatorPath = resolveModule(
       `${this.pluginName}/generator`,
       process.cwd()
     )
-    console.log("xxxx", generatorPath)
+    if (generatorPath) {
+      invoke(this.pluginName, this.pluginOptions, process.cwd())
+    } else {
+      console.log(`插件 ${this.pluginName} 并没有一个被调用的 generator 文件`)
+    }
   }
 
   // 解析插件名称和版本号

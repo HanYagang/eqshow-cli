@@ -29,3 +29,14 @@ exports.resolveModule = function (request, context) {
   } catch (e) {}
   return resolvedPath
 }
+
+exports.loadModule = (request, context) => {
+  try {
+    return createRequire(path.resolve(context, "package.json"))(request)
+  } catch (e) {
+    const resolvedPath = exports.resolveModule(request, context)
+    if (resolvedPath) {
+      return require(resolvedPath)
+    }
+  }
+}

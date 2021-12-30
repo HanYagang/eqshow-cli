@@ -1,0 +1,24 @@
+{
+  "name": "@eqshow/invoke",
+  "version": "1.0.3",
+  "description": "跳过安装依赖阶段,直接执行生成器",
+  "author": "hanyagang <70358969@qq.com>",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/commands/invoke#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanYagang/eqshow-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  },
+  "dependencies": {
+    "@eqshow/generator": "^1.0.3",
+    "@eqshow/shared": "^1.0.2"
+  }
+}
