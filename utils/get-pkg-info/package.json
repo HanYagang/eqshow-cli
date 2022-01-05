@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/get-pkg-info",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "获取包相关信息",
   "author": "HanYagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/utils/get-pkg-info#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/shared": "^1.0.2",
+    "@eqshow/shared": "^1.0.4",
     "axios": "^0.23.0",
     "url-join": "^4.0.1"
   },

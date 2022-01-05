@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/package-manager",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "包管理器",
   "author": "hanyagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/models/package-manager#readme",
@@ -18,6 +18,6 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/shared": "^1.0.2"
+    "@eqshow/shared": "^1.0.4"
   }
 }

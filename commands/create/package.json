@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/create",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "创建项目命令",
   "author": "HanYagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/commands/create#readme",
@@ -15,9 +15,9 @@
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
   },
   "dependencies": {
-    "@eqshow/command": "^1.0.2",
-    "@eqshow/package": "^1.0.3",
-    "@eqshow/shared": "^1.0.2",
+    "@eqshow/command": "^1.0.4",
+    "@eqshow/package": "^1.0.4",
+    "@eqshow/shared": "^1.0.4",
     "ejs": "^3.1.6",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
