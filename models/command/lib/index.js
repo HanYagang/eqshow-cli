@@ -7,7 +7,7 @@ class Command {
     // 命令本身
     this._cmd = cmd
     // 初始化执行command
-    this.init()
+    this.init(args)
   }
 
   init() {

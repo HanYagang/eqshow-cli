@@ -5,7 +5,7 @@ const { getPkgLatestVersion } = require("@eqshow/get-pkg-info")
 const invoke = require("@eqshow/invoke")
 
 class AddCommand extends Command {
-  async init() {
+  async init(args) {
     this.pluginToAdd = this._argv[0] || ""
     this.pluginOptions = this._argv[1] || {}
     this.parsingPlugin()
@@ -35,7 +35,7 @@ class AddCommand extends Command {
       process.cwd()
     )
     if (generatorPath) {
-      invoke(this.pluginName, this.pluginOptions, process.cwd())
+      invoke(args).run(process.cwd())
     } else {
       console.log(`插件 ${this.pluginName} 并没有一个被调用的 generator 文件`)
     }

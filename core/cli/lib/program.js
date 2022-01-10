@@ -61,6 +61,15 @@ module.exports = function initProgram() {
       require("@eqshow/add")(...args)
     })
 
+  // invoke
+  program
+    .command("invoke <plugin-name>")
+    .description("不进行安装，调用本地已经安装的插件")
+    .option("-f, --force", "强制调用插件")
+    .action((...args) => {
+      require("@eqshow/invoke")(args).run()
+    })
+
   // 处理未知命令并匹配建议
   program.on("command:*", (operands) => {
     const unknownCommand = operands[0]

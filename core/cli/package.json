@@ -30,6 +30,7 @@
     "@eqshow/add": "^1.0.4",
     "@eqshow/exec": "^1.0.4",
     "@eqshow/get-pkg-info": "^1.0.4",
+    "@eqshow/invoke": "^1.0.4",
     "@eqshow/log": "^1.0.4",
     "@eqshow/shared": "^1.0.4",
     "commander": "^8.2.0",
