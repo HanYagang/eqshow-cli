@@ -40,6 +40,12 @@ module.exports = function initProgram() {
         " 来展示当前命令的详细使用文档\n"
     )
 
+  program
+    .command("create <app-name>")
+    .description("交互式创建一个新项目")
+    .option("-f, --force", "覆盖目标目录（如果它存在）")
+    .action(exec)
+
   // init
   program
     .command("init <app-name>")
