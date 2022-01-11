@@ -72,5 +72,4 @@ module.exports = {
     // 强制 generator 函数中 * 号周围使用一致的空格
     "generator-star-spacing": [2, { before: true, after: true }]
   }
-  // "no-async-promise-executor": 2,
 }
