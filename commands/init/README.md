@@ -1,11 +1,11 @@
-# `@eqshow/create`
+# `@eqshow/init`
 
 > TODO: description
 
 ## Usage
 
 ```
-const create = require('@eqshow/create');
+const init = require('@eqshow/init');
 
 // TODO: DEMONSTRATE API
 ```

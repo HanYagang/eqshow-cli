@@ -40,10 +40,10 @@ module.exports = function initProgram() {
         " 来展示当前命令的详细使用文档\n"
     )
 
-  // create
+  // init
   program
-    .command("create <app-name>")
-    .description("创建一个新项目")
+    .command("init <app-name>")
+    .description("从一个模板生成项目")
     .option("-f, --force", "覆盖目标目录（如果它存在）")
     .option("-tp, --targetPath <target-path>", "指定动态加载文件的路径", "")
     .action(exec)

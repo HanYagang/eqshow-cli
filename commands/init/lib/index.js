@@ -24,45 +24,49 @@ class CreateCommand extends Command {
   async prepare() {
     // 判断当前目录是否为空
     const projectDir = path.resolve(process.cwd(), this.projectName)
-    if (!pathExists(projectDir)) {
-      fse.mkdirSync(this.projectName)
-    }
-    const fileList = fs.readdirSync(projectDir)
-    const opts = this._cmd.opts()
-    let { force } = opts
-    if (fileList.length) {
-      // 是否启用强制清空
-      if (!force) {
-        const { isClean } = await inquirer.prompt([
-          {
+    const projectDirExists = pathExists(projectDir)
+    if (projectDirExists) {
+      const fileList = fs.readdirSync(projectDir)
+      const opts = this._cmd.opts()
+      let { force } = opts
+      if (fileList.length) {
+        // 是否启用强制清空
+        if (!force) {
+          const { isClean } = await inquirer.prompt([
+            {
+              type: "confirm",
+              name: "isClean",
+              message: "当前目录不为空，是否启用强制清空？",
+              default: false
+            }
+          ])
+          force = isClean
+        }
+        // 是否确认强制更新
+        if (force) {
+          const { isClean } = await inquirer.prompt({
             type: "confirm",
             name: "isClean",
-            message: "当前目录不为空，是否启用强制清空？",
+            message: "是否确认清空当前目录？",
             default: false
-          }
-        ])
-        force = isClean
-      }
-      // 是否确认强制更新
-      if (force) {
-        const { isClean } = await inquirer.prompt({
-          type: "confirm",
-          name: "isClean",
-          message: "是否确认清空当前目录？",
-          default: false
-        })
-        force = isClean
-      }
-      if (force) {
-        console.log("开始清空目录……")
-        fse.emptyDirSync(process.cwd())
-        console.log("目录清空完成！！！")
-      } else {
-        throw Error("当前目录不为空，请清空后或者选择新的目录进行创建")
+          })
+          force = isClean
+        }
+        if (force) {
+          console.log("开始清空目录……")
+          fse.emptyDirSync(projectDir)
+          console.log("目录清空完成！！！")
+        } else {
+          throw Error("当前目录不为空，请清空后或者选择新的目录进行创建")
+        }
       }
     }
     // 获取项目基本信息
     const projectInfo = await this.getProjectInfo()
+    // 目录不存在则创建目录
+    if (!projectDirExists) {
+      fse.mkdirSync(this.projectName)
+    }
     // 获取模板信息
     await this.getTemplate(projectInfo)
   }
@@ -120,12 +124,16 @@ class CreateCommand extends Command {
     // 拷贝完成之后，ejs渲染一遍
     await this.templateRender()
     console.log("模板渲染成功！！！")
-    const packageManager =
-      this.cliOptions.packageManager || (hasYarn() ? "yarn" : null) || "npm"
+    const packageManager = hasYarn() ? "yarn" : "npm"
     console.log("安装 node_modules ……")
     const args = packageManager === "yarn" ? [] : ["install"]
+    console.log(
+      "package manager: ",
+      packageManager,
+      path.resolve(process.cwd(), this.projectName)
+    )
     const result = await this.exec(packageManager, args, {
-      cwd: path.resolve(process.cwd(), "hello-world"),
+      cwd: path.resolve(process.cwd(), this.projectName),
       stdio: "inherit"
     })
     if (result && result.status === 0) {
