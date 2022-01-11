@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@eqshow/add": "^1.0.4",
+    "@eqshow/create": "^1.0.4",
     "@eqshow/exec": "^1.0.4",
     "@eqshow/get-pkg-info": "^1.0.4",
     "@eqshow/invoke": "^1.0.4",

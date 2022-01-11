@@ -44,7 +44,9 @@ module.exports = function initProgram() {
     .command("create <app-name>")
     .description("交互式创建一个新项目")
     .option("-f, --force", "覆盖目标目录（如果它存在）")
-    .action(exec)
+    .action((...args) => {
+      require("@eqshow/create")(args)
+    })
 
   // init
   program
