@@ -10,14 +10,14 @@ class GeneratorAPI {
    * @param {string} id - 插件名称
    * @param {Generator} generator - Generator实例
    * @param {object} options - generator配置
+   * @param {object} context - 工作目录
    */
-  constructor(id, generator, options) {
+  constructor(id, generator, options, context) {
     this.id = id
     this.generator = generator
     this.options = options
     // 获取 package.json 所在的工作目录
-    const baseDir = pkgDir(process.cwd())
-    this.baseDir = baseDir
+    this.baseDir = context || pkgDir(process.cwd())
   }
 
   // 注入回调

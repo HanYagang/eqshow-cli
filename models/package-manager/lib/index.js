@@ -40,6 +40,13 @@ class PackageManager {
       this.context
     )
   }
+
+  async install() {
+    return await this.runCommand(
+      "install",
+      this.needsPeerDepsFix ? ["--legacy-peer-deps"] : []
+    )
+  }
 }
 
 module.exports = PackageManager

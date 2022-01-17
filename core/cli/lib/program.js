@@ -40,6 +40,7 @@ module.exports = function initProgram() {
         " 来展示当前命令的详细使用文档\n"
     )
 
+  // create命令
   program
     .command("create <app-name>")
     .description("交互式创建一个新项目")

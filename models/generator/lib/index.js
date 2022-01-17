@@ -1,11 +1,11 @@
 const GeneratorAPI = require("./generator-api")
 
 class Generator {
-  constructor(context, { plugin }) {
+  constructor(context, { plugins }) {
     // 当前执行环境 cwd
     this.context = context
     // 当前安装的插件信息
-    this.plugin = plugin
+    this.plugins = plugins
     // 收集回调 -> 解决插件中执行异步渲染等的问题
     this.callbacks = []
   }
@@ -15,9 +15,12 @@ class Generator {
    * 1. 调用回调函数
    */
   async initPlugins() {
-    const { id, apply, options } = this.plugin
-    const api = new GeneratorAPI(id, this, options)
-    await apply(api, options)
+    for (let i = 0; i < this.plugins.length; i++) {
+      const plugin = this.plugins[i]
+      const { id, apply, options } = plugin
+      const api = new GeneratorAPI(id, this, options, this.context)
+      await apply(api, options)
+    }
   }
 
   // 清空收集的回调队列

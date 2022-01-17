@@ -24,7 +24,7 @@ class InvokeCommand extends Command {
   }
 
   async runGenerator(context, plugin) {
-    const generator = new Generator(context, { plugin })
+    const generator = new Generator(context, { plugins: [plugin] })
 
     console.log(`🚀  正在调用的生成器 ${plugin.id}...`)
     console.log()

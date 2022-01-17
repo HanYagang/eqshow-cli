@@ -16,5 +16,14 @@
   },
   "bugs": {
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
+  },
+  "dependencies": {
+    "@eqshow/command": "^1.0.4",
+    "@eqshow/generator": "^1.0.4",
+    "@eqshow/package-manager": "^1.0.4",
+    "@eqshow/shared": "^1.0.4",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "path-exists": "4.0.0"
   }
 }
