@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "添加插件命令",
   "author": "HanYagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/commands/add#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/commands/add#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "publishConfig": {

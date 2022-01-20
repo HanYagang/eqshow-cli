@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "> TODO: description",
   "author": "HanYagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/utils/log#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/utils/log#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "publishConfig": {

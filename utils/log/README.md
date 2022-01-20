@@ -1,6 +1,6 @@
 # `@eqshow/log`
 
-> TODO: description
+> TODO: 对npmlog的一层封装。控制台打印日志用。
 
 ## Usage
 

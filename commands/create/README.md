@@ -25,8 +25,8 @@ createInstance.run()
 
 | 属性        | 说明                                  | 类型   |
 | ----------- | ------------------------------------- | ------ |
-| _argv       | commanderJs中create命令接收的所有参数 | Arrary |
-| _cmd        | commanderJs中create命令本身           | Object |
+| _argv       | commanderJs中 create 命令接收的所有参数 | Arrary |
+| _cmd        | commanderJs中 create 命令本身           | Object |
 | projectName | 要创建的项目名称                      | String |
 | cliOptions  | 脚手架命令接收的option参数            | Object |
 | context     | 新建项目的执行上下文（根据项目名称）  | String |

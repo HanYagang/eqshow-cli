@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "常用工具及函数",
   "author": "HanYagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/utils/shared#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/utils/shared#readme",
   "license": "MIT",
   "main": "index.js",
   "publishConfig": {
@@ -13,9 +13,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
