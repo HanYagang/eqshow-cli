@@ -7,7 +7,7 @@
     "cli"
   ],
   "author": "HanYagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/core/cli#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/core/cli#readme",
   "license": "MIT",
   "bin": {
     "eqx": "bin/index.js"
@@ -19,9 +19,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/HanYagang/eqshow-cli/issues"

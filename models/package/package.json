@@ -3,16 +3,9 @@
   "version": "1.0.4",
   "description": "package模型",
   "author": "HanYagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/models/package#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/models/package#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com/",
     "access": "public"
@@ -20,9 +13,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/HanYagang/eqshow-cli/issues"

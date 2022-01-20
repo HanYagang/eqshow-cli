@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "包管理器",
   "author": "hanyagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/models/package-manager#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/models/package-manager#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "publishConfig": {

@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "generator工具类",
   "author": "hanyagang <70358969@qq.com>",
-  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/main/models/generator#readme",
+  "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/models/generator#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "publishConfig": {
