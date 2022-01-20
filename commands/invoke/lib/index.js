@@ -40,7 +40,7 @@ class InvokeCommand extends Command {
 module.exports.InvokeCommand = InvokeCommand
 module.exports = (...args) => {
   try {
-    return new InvokeCommand(...args)
+    return new InvokeCommand(args)
   } catch (error) {
     console.log("error", error.message)
   }

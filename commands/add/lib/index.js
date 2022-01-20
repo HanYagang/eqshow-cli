@@ -55,4 +55,5 @@ function add(...args) {
   return new AddCommand(args)
 }
 
+module.exports.AddCommand = AddCommand
 module.exports = add

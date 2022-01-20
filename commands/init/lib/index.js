@@ -9,7 +9,7 @@ const Command = require("@eqshow/command")
 const Package = require("@eqshow/package")
 const { hasYarn } = require("@eqshow/shared")
 
-class CreateCommand extends Command {
+class InitCommand extends Command {
   async init() {
     this.projectName = this._argv[0] || ""
     this.cliOptions = this._argv[1] || {}
@@ -198,9 +198,9 @@ class CreateCommand extends Command {
   }
 }
 
-function create(...args) {
-  return new CreateCommand(args)
+function init(...args) {
+  return new InitCommand(args)
 }
 
-module.exports.CreateCommand = CreateCommand
-module.exports = create
+module.exports.CreateCommand = InitCommand
+module.exports = init
