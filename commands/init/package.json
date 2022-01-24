@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/init",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "init命令",
   "author": "hanyagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/commands/init#readme",
@@ -18,9 +18,9 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/command": "^1.0.4",
-    "@eqshow/package": "^1.0.4",
-    "@eqshow/shared": "^1.0.4",
+    "@eqshow/command": "^1.0.5",
+    "@eqshow/package": "^1.0.5",
+    "@eqshow/shared": "^1.0.5",
     "ejs": "^3.1.6",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",

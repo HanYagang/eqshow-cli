@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/add",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "添加插件命令",
   "author": "HanYagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/commands/add#readme",
@@ -15,11 +15,11 @@
     "url": "git+https://github.com/HanYagang/eqshow-cli.git"
   },
   "dependencies": {
-    "@eqshow/command": "^1.0.4",
-    "@eqshow/get-pkg-info": "^1.0.4",
-    "@eqshow/invoke": "^1.0.4",
-    "@eqshow/package-manager": "^1.0.4",
-    "@eqshow/shared": "^1.0.4"
+    "@eqshow/command": "^1.0.5",
+    "@eqshow/get-pkg-info": "^1.0.5",
+    "@eqshow/invoke": "^1.0.5",
+    "@eqshow/package-manager": "^1.0.5",
+    "@eqshow/shared": "^1.0.5"
   },
   "gitHead": "8a16492a27864e3c95abb05cfa8afd3a2f0ad464"
 }

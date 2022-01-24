@@ -1,6 +1,6 @@
 {
   "name": "@eqshow/invoke",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "跳过安装依赖阶段,直接执行生成器",
   "author": "hanyagang <70358969@qq.com>",
   "homepage": "https://github.com/HanYagang/eqshow-cli/tree/master/commands/invoke#readme",
@@ -18,8 +18,8 @@
     "url": "https://github.com/HanYagang/eqshow-cli/issues"
   },
   "dependencies": {
-    "@eqshow/command": "^1.0.4",
-    "@eqshow/generator": "^1.0.4",
-    "@eqshow/shared": "^1.0.4"
+    "@eqshow/command": "^1.0.5",
+    "@eqshow/generator": "^1.0.5",
+    "@eqshow/shared": "^1.0.5"
   }
 }
